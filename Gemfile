@@ -11,6 +11,8 @@ group :development, :test do
    gem "better_errors"
 end
 
+gem 'bcrypt', '~> 3.1.7'
+
 group :production do
    gem 'pg'
    gem 'rails_12factor'
