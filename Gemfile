@@ -5,10 +5,10 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
 
-#wadror muutokset!!! poistettu gem 'sqlite3' ja lisatty seuraava
 group :development, :test do
    gem 'sqlite3'
    gem "better_errors"
+   gem 'rspec-rails', '~> 3.0'
 end
 
 gem 'bcrypt', '~> 3.1.7'
@@ -18,8 +18,13 @@ group :production do
    gem 'rails_12factor'
 end
 
+group :test do
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'launchy'
+end
+
 ruby '2.3.0'
-#tahan loppuu wadror muutokset
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
