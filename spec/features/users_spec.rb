@@ -38,10 +38,12 @@ describe "User" do
   describe "have rated some beers" do
     before :each do
       @brewery = FactoryGirl.create :brewery, name:"Sierra Nevada"
+      @style = FactoryGirl.create :style, name:"IPA"
       other_brewery = FactoryGirl.create :brewery
-      create_beers_with_ratings(user, "lager", other_brewery, 10, 20, 15)
-      create_beers_with_ratings(user, "IPA", @brewery, 25, 20)
-      create_beers_with_ratings(user, "stout", other_brewery, 20, 23, 22)
+      other_style = FactoryGirl.create :style
+      create_beers_with_ratings(user, other_style, other_brewery, 10, 20, 15)
+      create_beers_with_ratings(user, @style, @brewery, 25, 20)
+      create_beers_with_ratings(user, other_style, other_brewery, 20, 23, 22)
     end
 
     it "the favorite style is shown at user's page" do

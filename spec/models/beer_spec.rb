@@ -1,15 +1,20 @@
 require 'rails_helper'
 
+include Helpers
+
 RSpec.describe Beer, type: :model do
+
   it "is created if proper name and style set" do
-    beer = Beer.create name:"iso 3", style: "lager"
+    style = FactoryGirl.create :style
+    beer = Beer.create name:"iso 3", style: style
 
       expect(beer).to be_valid
       expect(Beer.count).to eq(1)
   end
 
   it "is not created if no name set" do
-    beer = Beer.create style: "lager"
+    FactoryGirl.create :style
+    beer = Beer.create
 
       expect(beer).not_to be_valid
       expect(Beer.count).to eq(0)
