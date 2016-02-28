@@ -1,12 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <%= form_tag places_path do %>
-  city <%= text_field_tag :city, params[:city] %>
-  <%= submit_tag "Search" %>
+  <div class="col-lg-6">
+    <div class="input-group">
+      <%= text_field_tag :city, params[:city], placeholder:"Search for a city", class:"form-control" %>
+      <span class="input-group-btn">
+        <%= submit_tag "Search", class:'btn btn-default' %>
+      </span>
+    </div>
+  </div>
 <% end %>
 
 <% if @places %>
-  <table>
+  <table class="table table-hover">
     <thead>
       <% Place.rendered_fields.each do |f| %>
         <td><%=f %></td>

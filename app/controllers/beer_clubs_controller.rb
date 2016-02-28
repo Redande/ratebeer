@@ -1,6 +1,7 @@
 class BeerClubsController < ApplicationController
   before_action :set_beer_club, only: [:show, :edit, :update, :destroy]
   before_action :ensure_that_signed_in, except: [:index, :show]
+  before_action :require_admin, only: [:destroy]
 
   # GET /beer_clubs
   # GET /beer_clubs.json
@@ -78,5 +79,12 @@ class BeerClubsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def beer_club_params
       params.require(:beer_club).permit(:name, :city, :founded)
+    end
+
+    def require_admin
+      unless current_user.admin
+        flash[:error] = "You must be an admin to delete this!"
+        redirect_to @beer_club
+      end
     end
 end

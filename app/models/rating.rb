@@ -6,6 +6,8 @@ class Rating < ActiveRecord::Base
   belongs_to :beer
   belongs_to :user
 
+  scope :recent, -> { Rating.all.reverse.take(5) }
+
   def to_s
     "#{beer.name} #{score}"
   end

@@ -7,6 +7,11 @@ gem 'rails', '4.2.5'
 
 gem 'httparty'
 
+gem 'bootstrap-sass'
+group :development do
+  gem 'rails_layout'
+end
+
 # Use sqlite3 as the database for Active Record
 group :development, :test do
   gem 'sqlite3'

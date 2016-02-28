@@ -1,5 +1,6 @@
 class StylesController < ApplicationController
   before_action :set_style, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:destroy]
 
   # GET /styles
   # GET /styles.json
@@ -70,5 +71,12 @@ class StylesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def style_params
       params.require(:style).permit(:name, :description)
+    end
+
+    def require_admin
+      unless current_user.admin
+        flash[:error] = "You must be an admin to delete this!"
+        redirect_to @style
+      end
     end
 end

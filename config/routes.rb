@@ -15,6 +15,14 @@ Rails.application.routes.draw do
   resources :breweries
   resources :ratings, only: [:index, :new, :create, :destroy]
 
+  resources :breweries do
+    post 'toggle_activity', on: :member
+  end
+
+  resources :users do
+    post 'toggle_freeze', on: :member
+  end
+
   root 'breweries#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
