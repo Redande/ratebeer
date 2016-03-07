@@ -3,8 +3,10 @@ class Rating < ActiveRecord::Base
                                     less_than_or_equal_to: 50,
                                     only_integer: true }
 
-  belongs_to :beer
+  belongs_to :beer, touch: true
   belongs_to :user
+  has_one :brewery, through: :beer
+  has_one :style, through: :beer
 
   scope :recent, -> { Rating.all.reverse.take(5) }
 

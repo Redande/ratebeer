@@ -12,6 +12,10 @@ group :development do
   gem 'rails_layout'
 end
 
+gem 'jquery-turbolinks'
+
+gem 'rack-mini-profiler'
+
 # Use sqlite3 as the database for Active Record
 group :development, :test do
   gem 'sqlite3'
@@ -58,6 +62,8 @@ group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'webmock'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
 end
 
 gem 'simplecov', require: false
